@@ -1,0 +1,270 @@
+/* ==========================================================
+   header.css
+   Ultra-premium sticky site header + luxury mobile drawer.
+   ========================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+
+  /* High-end glassmorphism surface */
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+  transition:
+    background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+
+  border-bottom: 1px solid rgba(225, 6, 0, 0.2);
+  box-shadow:
+    0 10px 30px -10px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 28px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.logo:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+.logo img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* DESKTOP NAVIGATION */
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  position: relative;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #111111;
+  padding: 10px 2px;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--ducati-red) 0%, #ff3838 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(225, 6, 0, 0.5);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover {
+  color: var(--ducati-red);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--ducati-red);
+  font-weight: 800;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* HEADER ACTIONS & CTA */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--ducati-red) 0%, #b30500 100%);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(225, 6, 0, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.header-cta:hover {
+  background: linear-gradient(135deg, #ff1a14 0%, var(--ducati-red) 100%);
+  box-shadow: 0 6px 24px rgba(225, 6, 0, 0.55);
+  transform: translateY(-2px);
+}
+
+.header-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(225, 6, 0, 0.3);
+}
+
+.header-cta-arrow {
+  transition: transform 0.25s ease;
+}
+
+.header-cta:hover .header-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* MOBILE MENU TOGGLE BUTTON */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.menu-btn {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.menu-btn:hover {
+  background: rgba(225, 6, 0, 0.08);
+  border-color: var(--ducati-red);
+  color: var(--ducati-red);
+}
+
+/* MOBILE FULLSCREEN MENU */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 11, 14, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  overflow-y: auto;
+}
+
+.mobile-menu-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mobile-menu-links {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-menu-links a {
+  color: #f0f0f0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu-links a:hover,
+.mobile-menu-links a.active {
+  color: var(--ducati-red);
+  padding-left: 8px;
+}
+
+.mobile-menu-cta-wrap {
+  margin-top: 36px;
+  padding-bottom: 24px;
+}
+
+.mobile-menu-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, var(--ducati-red) 0%, #b30500 100%);
+  color: #ffffff !important;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(225, 6, 0, 0.45);
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 900px) {
+  .nav-desktop {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-cta {
+    display: none;
+  }
+}

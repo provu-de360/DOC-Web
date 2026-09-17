@@ -1,0 +1,247 @@
+/* ==========================================================
+   roadAnimation.css
+   Ultra-Premium Animated Road Down-Arrow Scroll Indicator
+   ========================================================== */
+
+.road-scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+  touch-action: manipulation;
+  outline: none;
+}
+
+/* SLEEK RACING BADGE TAG */
+.road-scroll-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(12, 13, 17, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(225, 6, 0, 0.2);
+  font-family: var(--font-heading, "Helvetica Neue", Arial, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #f5f5f5;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.road-tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ducati-red, #E10600);
+  box-shadow: 0 0 8px #E10600;
+  animation: roadDotPulse 1.4s infinite alternate ease-in-out;
+}
+
+@keyframes roadDotPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.65;
+    box-shadow: 0 0 4px #E10600;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 1;
+    box-shadow:
+      0 0 10px #E10600,
+      0 0 18px #ff3838;
+  }
+}
+
+/* THE BOLD ASPHALT ROAD CAPSULE TRACK */
+.road-track-capsule {
+  position: relative;
+  width: 52px;
+  height: 102px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #1d1e26 0%, #101116 50%, #0a0b0e 100%);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.75),
+    0 0 28px rgba(225, 6, 0, 0.35),
+    inset 0 0 18px rgba(0, 0, 0, 0.95);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* RACING KERBS (Red & White curbs on road sides) */
+.road-curb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--ducati-red, #E10600) 0px,
+    var(--ducati-red, #E10600) 9px,
+    #ffffff 9px,
+    #ffffff 18px
+  );
+  opacity: 0.9;
+  animation: curbFlow 0.8s linear infinite;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.road-curb-left {
+  left: 2px;
+}
+
+.road-curb-right {
+  right: 2px;
+}
+
+@keyframes curbFlow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 36px;
+  }
+}
+
+/* MOVING ROAD ASPHALT DASHED LINE */
+.road-dashes-vertical {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0px,
+    rgba(255, 255, 255, 0.9) 12px,
+    transparent 12px,
+    transparent 24px
+  );
+  animation: roadDashMove 0.7s linear infinite;
+  opacity: 0.55;
+  z-index: 1;
+}
+
+@keyframes roadDashMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 48px;
+  }
+}
+
+/* CHEVRONS FLOWING DOWNWARDS */
+.road-chevrons-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.road-chevron {
+  width: 22px;
+  height: 13px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9));
+  animation: chevronFlow 1.6s ease-in-out infinite;
+}
+
+.road-chevron.chevron-1 {
+  animation-delay: 0s;
+  opacity: 0.45;
+}
+
+.road-chevron.chevron-2 {
+  animation-delay: 0.28s;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 8px rgba(225, 6, 0, 0.7));
+}
+
+.road-chevron.chevron-3 {
+  animation-delay: 0.55s;
+  opacity: 1;
+  filter: drop-shadow(0 0 12px rgba(225, 6, 0, 1));
+}
+
+@keyframes chevronFlow {
+  0% {
+    transform: translateY(-6px);
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(8px);
+    opacity: 0.15;
+  }
+}
+
+/* HOVER & INTERACTIVE ACCELERATION */
+.road-scroll-indicator:hover .road-track-capsule {
+  border-color: var(--ducati-red, #E10600);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(225, 6, 0, 0.8),
+    inset 0 0 16px rgba(0, 0, 0, 0.95);
+  transform: translateY(2px);
+}
+
+.road-scroll-indicator:hover .road-dashes-vertical {
+  animation-duration: 0.35s;
+  opacity: 0.85;
+}
+
+.road-scroll-indicator:hover .road-curb {
+  animation-duration: 0.4s;
+  opacity: 1;
+}
+
+.road-scroll-indicator:hover .road-scroll-tag {
+  border-color: var(--ducati-red, #E10600);
+  color: #ffffff;
+  letter-spacing: 0.24em;
+  box-shadow:
+    0 6px 22px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(225, 6, 0, 0.4);
+}
+
+.road-scroll-indicator:hover .road-chevron {
+  animation-duration: 0.85s;
+}
+
+/* HIDE ON MOBILE DEVICES */
+@media (max-width: 768px) {
+  .road-scroll-indicator {
+    display: none !important;
+  }
+}
